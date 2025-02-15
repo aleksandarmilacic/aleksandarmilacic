@@ -14,10 +14,10 @@ jobs:
 
       - name: Generate GitHub Stats
         run: |
-          curl -H "Authorization: token ${{ secrets.GH_STATS_TOKEN }}" \
+          curl -H "Authorization: token ${{ secrets.GH_METRICS_TOKEN }}" \
                "https://github-readme-stats.vercel.app/api?username=aleksandarmilacic&show_icons=true&count_private=true&theme=radical" \
                -o github-stats.svg
-          curl -H "Authorization: token ${{ secrets.GH_STATS_TOKEN }}" \
+          curl -H "Authorization: token ${{ secrets.GH_METRICS_TOKEN }}" \
                "https://github-readme-stats.vercel.app/api/top-langs/?username=aleksandarmilacic&layout=compact&theme=radical" \
                -o github-langs.svg
 
@@ -34,5 +34,5 @@ jobs:
 
       - name: Push changes
         run: |
-          git remote set-url origin https://aleksandarmilacic:${{ secrets.GH_STATS_TOKEN }}@github.com/aleksandarmilacic/aleksandarmilacic.git
+          git remote set-url origin https://aleksandarmilacic:${{ secrets.GH_METRICS_TOKEN }}@github.com/aleksandarmilacic/aleksandarmilacic.git
           git push origin main
