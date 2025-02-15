@@ -22,6 +22,8 @@ jobs:
                -o github-langs.svg
 
       - name: Update README.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_METRICS_TOKEN }}
         run: |
           echo "## 🚀 GitHub Stats" > README.md
           echo "![](github-stats.svg)" >> README.md
@@ -31,8 +33,5 @@ jobs:
           git config --global user.name "GitHub Actions"
           git add README.md github-stats.svg github-langs.svg
           git commit -m "Updated GitHub Stats"
+          git push
 
-      - name: Push changes
-        run: |
-          git remote set-url origin https://x-access-token:${{ secrets.GH_METRICS_TOKEN }}@github.com/aleksandarmilacic/aleksandarmilacic.git
-          git push origin main
