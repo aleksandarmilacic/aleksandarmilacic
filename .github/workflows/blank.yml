@@ -26,7 +26,7 @@ jobs:
           echo "![](github-langs.svg)" >> README.md
           git config --global user.email "github-actions@github.com"
           git config --global user.name "GitHub Actions"
-          git add README.md github-stats.svg github-langs.svg
+          git add README.md github-langs.svg
           git commit -m "Updated GitHub Stats"
 
       - name: Debug Authentication
