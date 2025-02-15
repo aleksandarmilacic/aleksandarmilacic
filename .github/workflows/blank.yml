@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GH_METRICS_TOKEN }}  # Ensures correct token is used
 
       - name: Generate GitHub Stats
         run: |
@@ -22,8 +24,6 @@ jobs:
                -o github-langs.svg
 
       - name: Update README.md
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_METRICS_TOKEN }}
         run: |
           echo "## 🚀 GitHub Stats" > README.md
           echo "![](github-stats.svg)" >> README.md
@@ -34,8 +34,10 @@ jobs:
           git add README.md github-stats.svg github-langs.svg
           git commit -m "Updated GitHub Stats"
 
-      - name: Remove default GitHub credentials
-        run: git config --global --unset-all http.https://github.com/.extraheader
+      - name: Debug Authentication
+        run: |
+          echo "Verifying authentication..."
+          git ls-remote https://x-access-token:${{ secrets.GH_METRICS_TOKEN }}@github.com/aleksandarmilacic/aleksandarmilacic.git
 
       - name: Push changes
         run: |
