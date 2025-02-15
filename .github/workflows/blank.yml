@@ -34,5 +34,5 @@ jobs:
 
       - name: Push changes
         run: |
-          git remote set-url origin https://aleksandarmilacic:${{ secrets.GH_METRICS_TOKEN }}@github.com/aleksandarmilacic/aleksandarmilacic.git
+          git remote set-url origin https://x-access-token:${{ secrets.GH_METRICS_TOKEN }}@github.com/aleksandarmilacic/aleksandarmilacic.git
           git push origin main
