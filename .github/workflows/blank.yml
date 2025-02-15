@@ -33,5 +33,11 @@ jobs:
           git config --global user.name "GitHub Actions"
           git add README.md github-stats.svg github-langs.svg
           git commit -m "Updated GitHub Stats"
-          git push
 
+      - name: Remove default GitHub credentials
+        run: git config --global --unset-all http.https://github.com/.extraheader
+
+      - name: Push changes
+        run: |
+          git remote set-url origin https://x-access-token:${{ secrets.GH_METRICS_TOKEN }}@github.com/aleksandarmilacic/aleksandarmilacic.git
+          git push origin main
