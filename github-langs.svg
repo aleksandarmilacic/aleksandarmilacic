@@ -130,7 +130,7 @@
           data-testid="lang-progress"
           x="0"
           y="0"
-          width="194.57"
+          width="194.65"
           height="8"
           fill="#178600"
         />
@@ -138,9 +138,9 @@
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
-          x="194.57"
+          x="194.65"
           y="0"
-          width="13.29"
+          width="13.27"
           height="8"
           fill="#f1e05a"
         />
@@ -148,9 +148,9 @@
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
-          x="207.85999999999999"
+          x="207.92000000000002"
           y="0"
-          width="12.51"
+          width="12.49"
           height="8"
           fill="#f34b7d"
         />
@@ -158,9 +158,9 @@
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
-          x="220.36999999999998"
+          x="220.41000000000003"
           y="0"
-          width="10.16"
+          width="10.15"
           height="8"
           fill="#000080"
         />
@@ -168,9 +168,9 @@
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
-          x="230.52999999999997"
+          x="230.56000000000003"
           y="0"
-          width="10.16"
+          width="10.15"
           height="8"
           fill="#3178c6"
         />
@@ -178,9 +178,9 @@
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
-          x="240.68999999999997"
+          x="240.71000000000004"
           y="0"
-          width="19.310000000000002"
+          width="19.3"
           height="8"
           fill="#e34c26"
         />
@@ -191,7 +191,7 @@
     <g class="stagger" style="animation-delay: 450ms">
       <circle cx="5" cy="6" r="5" fill="#178600" />
       <text data-testid="lang-name" x="15" y="10" class='lang-name'>
-        C# 77.83%
+        C# 77.86%
       </text>
     </g>
   </g><g transform="translate(0, 25)">
@@ -212,7 +212,7 @@
     <g class="stagger" style="animation-delay: 450ms">
       <circle cx="5" cy="6" r="5" fill="#000080" />
       <text data-testid="lang-name" x="15" y="10" class='lang-name'>
-        Lua 4.07%
+        Lua 4.06%
       </text>
     </g>
   </g><g transform="translate(0, 25)">
