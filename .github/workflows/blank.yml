@@ -2,39 +2,45 @@ name: Update GitHub Stats
 
 on:
   schedule:
-    - cron: "0 0 * * *"  # Runs daily at midnight UTC
-  workflow_dispatch:  # Allows manual execution
+    - cron: "0 0 * * *" # daily at midnight UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   update-readme:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.GH_METRICS_TOKEN }}  # Ensures correct token is used
+        uses: actions/checkout@v4
 
-      - name: Generate GitHub Stats
+      - name: Generate GitHub Stats (SVG)
         run: |
-          curl -H "Authorization: token ${{ secrets.GH_METRICS_TOKEN }}" \
-               "https://github-readme-stats.vercel.app/api/top-langs/?username=aleksandarmilacic&layout=compact&theme=radical" \
-               -o github-langs.svg
+          curl -fsSL \
+            "https://github-readme-stats.vercel.app/api/top-langs/?username=aleksandarmilacic&layout=compact&theme=radical" \
+            -o github-langs.svg
 
       - name: Update README.md
         run: |
-          echo "## 🏆 Languages" > README.md
-          echo "![](github-langs.svg)" >> README.md
-          git config --global user.email "github-actions@github.com"
-          git config --global user.name "GitHub Actions"
+          cat > README.md <<'EOF'
+          ## 🏆 Languages
+          ![](github-langs.svg)
+          EOF
+
+      - name: Commit changes (if any)
+        run: |
+          set -e
+          git config user.email "github-actions@github.com"
+          git config user.name "GitHub Actions"
+
           git add README.md github-langs.svg
-          git commit -m "Updated GitHub Stats"
 
-      - name: Debug Authentication
-        run: |
-          echo "Verifying authentication..."
-          git ls-remote https://x-access-token:${{ secrets.GH_METRICS_TOKEN }}@github.com/aleksandarmilacic/aleksandarmilacic.git
+          # Only commit if there are changes
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
 
-      - name: Push changes
-        run: |
-          git remote set-url origin https://x-access-token:${{ secrets.GH_METRICS_TOKEN }}@github.com/aleksandarmilacic/aleksandarmilacic.git
-          git push origin main
+          git commit -m "chore: update GitHub stats"
+          git push
