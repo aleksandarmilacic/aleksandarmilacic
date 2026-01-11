@@ -14,7 +14,8 @@ jobs:
     steps:
       - uses: lowlighter/metrics@latest
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.METRICS_TOKEN }}      # <-- PAT here (so it can read your repos)
+          committer_token: ${{ secrets.GITHUB_TOKEN }}  # <-- keep this for committing
           user: aleksandarmilacic
           filename: github-langs.svg
           base: ""
