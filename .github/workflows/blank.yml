@@ -23,19 +23,5 @@ jobs:
           plugin_languages_sections: most-used
           plugin_languages_details: bytes-size, percentage
           plugin_languages_limit: 8
-
-      - name: Update README.md
-        run: |
-          cat > README.md <<'EOF'
-          ## 🏆 Languages
-          ![](github-langs.svg)
-          EOF
-
-      - name: Commit & push (if any)
-        run: |
-          git config user.email "github-actions@github.com"
-          git config user.name "GitHub Actions"
-          git add README.md github-langs.svg
-          if git diff --cached --quiet; then exit 0; fi
-          git commit -m "chore: update metrics"
-          git push
+          output_action: commit
+          committer_message: "chore: update metrics"
