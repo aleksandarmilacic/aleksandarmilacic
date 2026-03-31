@@ -12,18 +12,18 @@ jobs:
   metrics:
     runs-on: ubuntu-latest
     steps:
-      - uses: lowlighter/metrics@v3.34
+      - uses: lowlighter/metrics@366f8b9dfe3a59656c67d5dcad9950f59c9bc96d
         with:
-          token: ${{ secrets.METRICS_TOKEN }}      # <-- PAT here (so it can read your repos)
-          committer_token: ${{ secrets.METRICS_TOKEN }}  # <-- use PAT so commits count as user activity (prevents GitHub from disabling the scheduled workflow after 60 days of bot-only commits)
+          token: ${{ secrets.METRICS_TOKEN }}
+          committer_token: ${{ secrets.METRICS_TOKEN }}
           user: aleksandarmilacic
           filename: github-langs.svg
           base: ""
           plugin_languages: yes
           plugin_languages_indepth: yes
-          plugin_languages_ignored: html, css, js, scss
+          plugin_languages_ignored: html, css, javascript, scss
           plugin_languages_sections: most-used, recently-used
           plugin_languages_details: bytes-size, percentage
-          plugin_languages_limit: 16
+          plugin_languages_limit: 8
           output_action: commit
           committer_message: "chore: update metrics"
