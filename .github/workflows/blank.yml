@@ -1,6 +1,8 @@
 name: Update Metrics
 
 on:
+  push:
+    branches: [main]
   schedule:
     - cron: "0 0 * * *"
   workflow_dispatch:
@@ -26,4 +28,4 @@ jobs:
           plugin_languages_details: bytes-size, percentage
           plugin_languages_limit: 8
           output_action: commit
-          committer_message: "chore: update metrics"
+          committer_message: "chore: update metrics [skip ci]"
