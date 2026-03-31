@@ -12,10 +12,10 @@ jobs:
   metrics:
     runs-on: ubuntu-latest
     steps:
-      - uses: lowlighter/metrics@latest
+      - uses: lowlighter/metrics@v3.34
         with:
           token: ${{ secrets.METRICS_TOKEN }}      # <-- PAT here (so it can read your repos)
-          committer_token: ${{ secrets.GITHUB_TOKEN }}  # <-- keep this for committing
+          committer_token: ${{ secrets.METRICS_TOKEN }}  # <-- use PAT so commits count as user activity (prevents GitHub from disabling the scheduled workflow after 60 days of bot-only commits)
           user: aleksandarmilacic
           filename: github-langs.svg
           base: ""
