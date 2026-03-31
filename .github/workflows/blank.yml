@@ -20,6 +20,7 @@ jobs:
           filename: github-langs.svg
           base: ""
           plugin_languages: yes
+          plugin_languages_indepth: yes
           plugin_languages_ignored: html, css, js, scss
           plugin_languages_sections: most-used, recently-used
           plugin_languages_details: bytes-size, percentage
